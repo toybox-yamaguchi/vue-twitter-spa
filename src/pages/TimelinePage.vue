@@ -28,14 +28,15 @@
 
   export default {
     vuex: {
+      // storeへの直接アクセスを防ぐためのもの｡引数に親コンポーネント(App.vue)からstateが注入される
+      // Getters は pure function でなければならない
       getters: {
-
         // ここの引数に入るのは store.state
-
-        // route は vue-router-sync で来るっぽい
-        tweetsInternal: ({timeline, route}) => {
+        // route は vue-router-sync 使ってるからある
+        tweets: ({timeline, route}) => {
           // var id = parseInt(route.params.id)
           // return timeline.all.find((p) => p.id === id) || {}
+          this.actions.getTimeline()
           console.log(JSON.stringify(timeline))
           return timeline.all
         }
@@ -44,13 +45,12 @@
         getTimeline
       }
     },
-    computed: {
-      // ここの引数に入るのは store.state
-      // route は vue-router-sync で来るっぽい
-      tweets () {
-        return this.tweetsInternal
-      }
-    },
+    // computed: {
+    //   // ここの引数に入るのは store.state
+    //   tweets () {
+    //     return this.tweetsInternal
+    //   }
+    // },
     created () {
       this.getTimeline()
     }

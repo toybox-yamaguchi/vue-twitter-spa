@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e276dbf4-8e8e-4b8c-b658-856ec6cb2ec1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/api/twitter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/TimelinePage.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vuex/timeline/actions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vuex/timeline/getters.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vuex/timeline/store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/HeaderBar.vue" afterPath="$PROJECT_DIR$/src/components/HeaderBar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/App.vue" afterPath="$PROJECT_DIR$/src/pages/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/HomePage.vue" afterPath="$PROJECT_DIR$/src/pages/HomePage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router.js" afterPath="$PROJECT_DIR$/src/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/mutation-types.js" afterPath="$PROJECT_DIR$/src/vuex/mutation-types.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vuex/store.js" afterPath="$PROJECT_DIR$/src/vuex/store.js" />
-    </list>
+    <list default="true" id="e276dbf4-8e8e-4b8c-b658-856ec6cb2ec1" name="Default" comment="" />
     <ignored path="vue-spa.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -489,12 +476,12 @@
       <workItem from="1469012134025" duration="39000" />
       <workItem from="1469012191476" duration="70000" />
       <workItem from="1469012273269" duration="6672000" />
-      <workItem from="1469093293490" duration="18207000" />
+      <workItem from="1469093293490" duration="18263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25087000" />
+    <option name="totallyTimeSpent" value="25143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

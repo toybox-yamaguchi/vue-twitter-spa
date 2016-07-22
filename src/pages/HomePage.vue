@@ -1,8 +1,7 @@
 <template>
-    <div v-for="p in products" class="product">
-      <a v-link="{name:'product', params:{id:p.id}}" class="title">{{ p.title }}</a>
-      <span class="price">{{ p.price | currency }}</span>
-    </div>
+  <div v-for="p in products" class="product">
+    <a v-link="{name:'product', params:{id:p.id}}" class="title">{{ p.title }}</a>
+    <span class="price">{{ p.price | currency }}</span>
   </div>
 </template>
 

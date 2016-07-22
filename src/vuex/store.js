@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import cart from './cart/store'
 import products from './products/store'
+import timeline from './timeline/store'
 import createLogger from 'vuex/logger'
 
 Vue.use(Vuex)
@@ -12,7 +13,8 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   modules: {
     cart,
-    products
+    products,
+    timeline
   },
   strict: debug,
   middlewares: debug ? [createLogger()] : []

@@ -12,8 +12,14 @@
 <script>
   import store from '../vuex/store'
   import HeaderBar from '../components/HeaderBar'
+  //
   export default {
-    store,
+    store, // == store: store
+    // http://vuex.vuejs.org/en/state.html
+    // > 1.Install Vuex and connect your root component to the store:
+
+    // https://jp.vuejs.org/guide/components.html#ローカル登録
+    // コンポーネントのローカル登録
     components: {HeaderBar}
   }
 </script>

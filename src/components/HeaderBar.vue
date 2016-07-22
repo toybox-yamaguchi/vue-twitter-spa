@@ -1,6 +1,7 @@
 <template>
   <div class="menu-links">
-    <a v-link="{path:'/'}">HOME</a>
+    <a v-link="{path:'/timeline'}">タイムライン</a>
+    <a v-link="{path:'/cart'}">返信 ({{ count }})</a>
     <a v-link="{path:'/cart'}">VIEW CART ({{ count }})</a>
   </div>
 </template>

@@ -1,6 +1,8 @@
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
+import TimelinePage from './pages/TimelinePage.vue'
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -19,7 +21,14 @@ router.map({
   },
   '/cart': {
     component: CartPage
+  },
+  '/timeline/': {
+    component: TimelinePage
+  },
+  '/timeline/:id': {
+    component: TimelinePage
   }
+
 })
 
 export default router

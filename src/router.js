@@ -13,6 +13,9 @@ var router = new VueRouter({
 
 router.map({
   '/': {
+    component: TimelinePage
+  },
+  '/home': {
     component: HomePage
   },
   '/product/:id': {
@@ -22,12 +25,12 @@ router.map({
   '/cart': {
     component: CartPage
   },
-  '/timeline/': {
-    component: TimelinePage
-  },
-  '/timeline/:id': {
+  '/timeline': {
     component: TimelinePage
   }
+  // '/timeline/:id': {
+  //   component: TimelinePage
+  // }
 
 })
 

@@ -7,7 +7,7 @@ const _tweets = [
 
 export default {
   getTimeline (cb) {
-    cb(_tweets)
-    // setTimeout(() => cb(_tweets), 100)
+    // cb(_tweets)
+    setTimeout(() => cb(_tweets), 100)
   }
 }

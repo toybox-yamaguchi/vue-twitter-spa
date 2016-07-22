@@ -1,5 +1,4 @@
 <template>
-  <p>timeline</p>
   <div class="cart">
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
     <div v-show="tweets.length > 0">
@@ -12,14 +11,13 @@
       </thead>
       <tbody>
       <tr v-for="t in tweets">
-        <td><a v-link="{name:'tweet', params:{id:t.id}}">{{ t.text }}</a></td>
+        <td>{{ t.text }}</td>
         <td>{{ t.date }}</td>
       </tr>
       </tbody>
     </table>
     </div>
   </div>
-  <p>end</p>
 </template>
 
 <script>
@@ -29,16 +27,21 @@
   export default {
     vuex: {
       // storeへの直接アクセスを防ぐためのもの｡引数に親コンポーネント(App.vue)からstateが注入される
-      // Getters は pure function でなければならない
+      // getters は pure function でなければならない
       getters: {
         // ここの引数に入るのは store.state
         // route は vue-router-sync 使ってるからある
-        tweets: ({timeline, route}) => {
+        tweets: ({timeline}) => {
           // var id = parseInt(route.params.id)
           // return timeline.all.find((p) => p.id === id) || {}
-          this.actions.getTimeline()
-          console.log(JSON.stringify(timeline))
+          // console.log(JSON.stringify(timeline))
+          // var stab = [
+          //   {'id': 1, 'text': 'ここにテキストが入ります', 'date': 0},
+          //   {'id': 2, 'text': 'ここにテキストが入ります', 'date': 0},
+          //   {'id': 3, 'text': 'ここにテキストが入ります', 'date': 0}
+          // ]
           return timeline.all
+          // return stab
         }
       },
       actions: {

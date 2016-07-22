@@ -27,10 +27,10 @@ router.map({
   },
   '/timeline': {
     component: TimelinePage
+  },
+  '/timeline/:id': {
+    component: TimelinePage
   }
-  // '/timeline/:id': {
-  //   component: TimelinePage
-  // }
 
 })
 

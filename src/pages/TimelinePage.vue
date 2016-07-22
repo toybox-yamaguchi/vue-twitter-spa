@@ -1,4 +1,5 @@
 <template>
+  <!-- バインディングに失敗すると動かない -->
   <div class="cart">
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
     <div v-show="tweets.length > 0">
@@ -31,8 +32,8 @@
       getters: {
         // ここの引数に入るのは store.state
         // route は vue-router-sync 使ってるからある
-        tweets: ({timeline}) => {
-          // var id = parseInt(route.params.id)
+        tweets: ({ timeline, route }) => {
+          var id = parseInt(route.params.id)
           // return timeline.all.find((p) => p.id === id) || {}
           // console.log(JSON.stringify(timeline))
           // var stab = [
@@ -40,20 +41,15 @@
           //   {'id': 2, 'text': 'ここにテキストが入ります', 'date': 0},
           //   {'id': 3, 'text': 'ここにテキストが入ります', 'date': 0}
           // ]
-          return timeline.all
           // return stab
+          console.log(id)
+          return timeline.all
         }
       },
       actions: {
         getTimeline
       }
     },
-    // computed: {
-    //   // ここの引数に入るのは store.state
-    //   tweets () {
-    //     return this.tweetsInternal
-    //   }
-    // },
     created () {
       this.getTimeline()
     }

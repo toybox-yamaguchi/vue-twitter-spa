@@ -56,14 +56,6 @@
         // route は vue-router-sync 使ってるからある
         tweets: ({ timeline, route }) => {
           var id = parseInt(route.params.id)
-          // return timeline.all.find((p) => p.id === id) || {}
-          // console.log(JSON.stringify(timeline))
-          // var stab = [
-          //   {'id': 1, 'text': 'ここにテキストが入ります', 'date': 0},
-          //   {'id': 2, 'text': 'ここにテキストが入ります', 'date': 0},
-          //   {'id': 3, 'text': 'ここにテキストが入ります', 'date': 0}
-          // ]
-          // return stab
           console.log('id: ' + id)
           return timeline.all
         }

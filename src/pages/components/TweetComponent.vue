@@ -3,16 +3,30 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
   <div>
-    <span>* </span>
-    <span>{{ text }}</span>
-    <span>{{ dateText }}</span>
+    <tabs :active="0">
+      <tab header="テキスト">
+        <span>{{ text }}</span>
+      </tab>
+      <tab header="日付">
+        <span>{{ dateText }}</span>
+      </tab>
+      <tab header="three" disabled>
+      </tab>
+    </tabs>
   </div>
 </template>
 
 <script>
   import DateFormat from 'dateformat'
+  import tab from 'vue-strap/src/tab'
+  import tabs from 'vue-strap/src/tabset'
+  // require('style!raw!./node_modules/bootstrap/dist/css/bootstrap.min.css')
 
   export default {
+    components: {
+      tab,
+      tabs
+    },
     props: [
       'text',
       'date'
@@ -28,7 +42,10 @@
         return DateFormat(x.date, 'yyyy/mm/dd')
       }
     }
+
+    // TODO: データバインディングを実際動かしてみる
   }
 </script>
 
-<style></style>
+<style>
+</style>

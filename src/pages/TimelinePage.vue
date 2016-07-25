@@ -42,7 +42,7 @@
 
 <script>
   import { getTimeline } from '../vuex/timeline/actions'
-  import TweetComponent from './TweetComponent.vue'
+  import TweetComponent from './components/TweetComponent.vue'
 
   export default {
     components: {

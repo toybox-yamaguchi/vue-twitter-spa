@@ -10,7 +10,7 @@ import Enumerable from 'linq'
 
 export default {
   getTimeline (cb) {
-    var stub = Enumerable.range(0, 2000)
+    var stub = Enumerable.range(0, 200)
       // .selectMany(x => _tweets)
       .select(i => {
         let t = Object.assign({}, _tweets[0]) // コピー

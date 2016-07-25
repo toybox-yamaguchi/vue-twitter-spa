@@ -1,8 +1,8 @@
 // API のシミュレート
 const _tweets = [
-  {'id': 1, 'text': 'ここにテキストが入ります', 'date': 0},
-  {'id': 2, 'text': 'ここにテキストが入ります', 'date': 0},
-  {'id': 3, 'text': 'ここにテキストが入ります', 'date': 0}
+  {'id': 1, 'text': 'ここにテキストが入ります', 'date': Date.now()},
+  {'id': 2, 'text': 'ここにテキストが入ります', 'date': Date.now()},
+  {'id': 3, 'text': 'ここにテキストが入ります', 'date': Date.now()}
 ]
 
 // import Linq from 'linq-es6'

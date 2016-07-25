@@ -1,31 +1,53 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
   <div class="cart">
+
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
+
     <div v-show="tweets.length > 0">
-    <table class="checkout-table">
-      <thead>
+      <table class="checkout-table">
+        <tbody>
+        <tr v-for="t in tweets">
+          <td>
+            <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
+            <tweet-component
+              v-bind:text="t.text"
+              v-bind:date="t.date"
+            ></tweet-component>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!--
+      <table class="checkout-table">
+        <thead>
         <tr>
           <th>Text</th>
           <th>Date</th>
         </tr>
-      </thead>
-      <tbody>
-      <tr v-for="t in tweets">
-        <td>{{ t.text }}</td>
-        <td>{{ t.date }}</td>
-      </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <tr v-for="t in tweets">
+          <td>{{ t.text }}</td>
+          <td>{{ t.date }}</td>
+        </tr>
+        </tbody>
+      </table>
+      -->
     </div>
+
   </div>
 </template>
 
 <script>
   import { getTimeline } from '../vuex/timeline/actions'
-  // import { cartProducts } from '../vuex/timeline/getters'
+  import TweetComponent from './TweetComponent.vue'
 
   export default {
+    components: {
+      TweetComponent
+    },
     vuex: {
       // storeへの直接アクセスを防ぐためのもの｡引数に親コンポーネント(App.vue)からstateが注入される
       // getters は pure function でなければならない

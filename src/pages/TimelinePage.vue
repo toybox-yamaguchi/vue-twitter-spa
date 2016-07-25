@@ -66,7 +66,11 @@
   }
 </script>
 
-<style>
+<!--
+sassを用いる場合
+http://vue-loader.vuejs.org/en/configurations/pre-processors.html
+-->
+<style lang="sass?outputStyle=expanded">
 
 .cart {
   width: 600px;

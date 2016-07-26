@@ -1,10 +1,12 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
   <div class="cart">
-    <post-message-component></post-message-component>
+    <post-message-component
+      @event-post="addTweet"
+    ></post-message-component>
 
     <div>
-      <button v-on:click="update" class="btn btn-info-outline">Update</button>
+      <button v-on:click="update" class="btn btn-info-outline">Timeline update</button>
     </div>
 
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
@@ -12,7 +14,7 @@
     <div v-show="tweets.length > 0">
       <table class="checkout-table">
         <tbody>
-        <tr v-for="t in tweets">
+        <tr v-for="t in tweets | orderBy 'date' -1">
           <td>
             <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
             <tweet-component v-bind:text="t.text" v-bind:date="t.date"></tweet-component>
@@ -20,30 +22,13 @@
         </tr>
         </tbody>
       </table>
-
-      <!--
-      <table class="checkout-table">
-        <thead>
-        <tr>
-          <th>Text</th>
-          <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="t in tweets">
-          <td>{{ t.text }}</td>
-          <td>{{ t.date }}</td>
-        </tr>
-        </tbody>
-      </table>
-      -->
     </div>
 
   </div>
 </template>
 
 <script>
-  import { getTimeline } from '../vuex/timeline/actions'
+  import { getTimeline, addTweet } from '../vuex/timeline/actions'
   import TweetComponent from './components/TweetComponent.vue'
   import PostMessageComponent from './components/PostMessageComponent.vue'
 
@@ -65,7 +50,8 @@
         }
       },
       actions: {
-        getTimeline
+        getTimeline,
+        addTweet
       }
     },
     created () {

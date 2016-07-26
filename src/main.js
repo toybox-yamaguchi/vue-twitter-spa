@@ -6,3 +6,4 @@ import { sync } from 'vuex-router-sync'
 sync(store, router)
 
 router.start(App, '#app')
+

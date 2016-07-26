@@ -6,3 +6,5 @@ export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
 
 // Twitter
 export const RECEIVE_TIMELINE = 'RECEIVE_TIMELINE'
+export const ADD_TWEET = 'ADD_TWEET'
+

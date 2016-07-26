@@ -14,7 +14,7 @@
         class="form-control"
         rows="5"
       ></textarea>
-      <button v-on:click="post" class="btn btn-primary">投稿</button>
+      <button @click="post" class="btn btn-primary">投稿</button>
     </div>
   </div>
 </template>
@@ -27,13 +27,14 @@
         default: ''
       },
       // 投稿に使用するAPIは外部から挿入される
+      // https://jp.vuejs.org/guide/components.html#再利用可能なコンポーネントの作成
       targetApi: {
         type: String
       }
     },
     methods: {
       post: function () {
-
+        this.$dispatch('event-post', this.message)
       }
     }
   }

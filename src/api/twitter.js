@@ -9,33 +9,36 @@ const _tweets = [
 import Enumerable from 'linq'
 
 export default {
+  stub: [],
   getTimeline (callback, isAsync = true) {
-    var stub = Enumerable.range(0, 200)
+    if (this.stub.length <= 0) {
+      let newStub = Enumerable.range(0, 200)
       // .selectMany(x => _tweets)
-      .select(i => {
-        let t = Object.assign({}, _tweets[0]) // コピー
-        t.id = i
-        t.text = Math.round(Math.random() * 10).toString()
-        return t
-      })
-      .toArray()
+        .select(i => {
+          let t = Object.assign({}, _tweets[0]) // コピー
+          t.id = i
+          t.text = 'Default'
+          return t
+        })
+        .toArray()
 
-    // stub.forEach(item => console.log('item: ' + item.id))
-    // console.log(JSON.stringify(stub))
+      this.stub = newStub
+    }
 
     if (isAsync) {
-      setTimeout(() => callback(stub), 100)
+      setTimeout(() => callback(this.stub), 100)
     }
     else {
-      callback(stub)
+      callback(this.stub)
     }
+  },
+  getNewTweet (callback, message, isAsync = true) {
+    let newTweet = Object.assign({}, _tweets[0])
+    newTweet.text = message
+    newTweet.date = Date.now()
 
-    // setTimeout(() => {
-    //   stub = Enumerable.from(stub).select(x => {
-    //     x.text = Date.now().toString()
-    //     return x
-    //   }).toArray()
-    //   callback(stub)
-    // }, 2000)
+    if (isAsync) { setTimeout(() => callback(newTweet), 100) }
+    else { callback(newTweet) }
   }
 }
+

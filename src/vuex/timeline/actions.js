@@ -6,5 +6,14 @@ export const getTimeline = ({ dispatch }) => {
   // 非同期API
   twitter.getTimeline(tweet => {
     dispatch(types.RECEIVE_TIMELINE, tweet)
-  })
+  }, true)
 }
+
+// export const updateTimeline = ({ dispatch }) => {
+//   // 非同期API
+//   setTimeout(() => {
+//     twitter.getTimeline(tweet => {
+//       dispatch(types.RECEIVE_TIMELINE, tweet)
+//     })
+//   }, 5000)
+// }

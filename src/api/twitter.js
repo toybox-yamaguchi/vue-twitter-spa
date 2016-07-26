@@ -9,12 +9,13 @@ const _tweets = [
 import Enumerable from 'linq'
 
 export default {
-  getTimeline (cb) {
+  getTimeline (callback, isAsync = true) {
     var stub = Enumerable.range(0, 200)
       // .selectMany(x => _tweets)
       .select(i => {
         let t = Object.assign({}, _tweets[0]) // コピー
         t.id = i
+        t.text = Math.round(Math.random() * 10).toString()
         return t
       })
       .toArray()
@@ -22,7 +23,19 @@ export default {
     // stub.forEach(item => console.log('item: ' + item.id))
     // console.log(JSON.stringify(stub))
 
-    // cb(_tweets)
-    setTimeout(() => cb(stub), 100)
+    if (isAsync) {
+      setTimeout(() => callback(stub), 100)
+    }
+    else {
+      callback(stub)
+    }
+
+    // setTimeout(() => {
+    //   stub = Enumerable.from(stub).select(x => {
+    //     x.text = Date.now().toString()
+    //     return x
+    //   }).toArray()
+    //   callback(stub)
+    // }, 2000)
   }
 }

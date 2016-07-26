@@ -36,7 +36,8 @@ const mutations = {
         id: productId,
         quantity: 1
       })
-    } else {
+    }
+    else {
       record.quantity++
     }
   },

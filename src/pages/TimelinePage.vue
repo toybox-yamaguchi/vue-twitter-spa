@@ -1,6 +1,9 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
   <div class="cart">
+    <div>
+      <button v-on:click="update">Update</button>
+    </div>
 
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
 
@@ -66,6 +69,12 @@
     },
     created () {
       this.getTimeline()
+    },
+    methods: {
+      // アロー関数を使うとthisが束縛されるので使わない
+      update: function () {
+        this.getTimeline()
+      }
     }
   }
 </script>

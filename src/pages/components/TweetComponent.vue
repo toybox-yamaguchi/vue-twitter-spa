@@ -10,7 +10,7 @@
       <tab header="日付">
         <span>{{ dateText }}</span>
       </tab>
-      <tab header="three" disabled>
+      <tab header="無効化されたタブ" disabled>
       </tab>
     </tabs>
   </div>
@@ -27,10 +27,15 @@
       tab,
       tabs
     },
-    props: [
-      'text',
-      'date'
-    ],
+    props: {
+      text: {
+        type: String,
+        default: 'defalut text'
+      },
+      date: {
+        type: Number
+      }
+    },
     // prop は内部テンプレートで利用でき、
     // そして `this.msg` として設定されます
     // template: '<span>{{ msg }}</span>'
@@ -44,6 +49,7 @@
     }
 
     // TODO: データバインディングを実際動かしてみる
+    // TODO: 投稿機能作る
   }
 </script>
 

@@ -36,8 +36,8 @@
       date: {
         type: Number
       },
-      'num'
-      'isActive'
+      'num': { type: Number },
+      'isActive': { type: Boolean }
     },
     // prop は内部テンプレートで利用でき、
     // そして `this.msg` として設定されます

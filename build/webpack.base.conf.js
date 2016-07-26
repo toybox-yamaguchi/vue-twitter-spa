@@ -28,8 +28,11 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'eslint',
-        exclude: /node_modules/
+        loader: 'babel',
+        exclude: /node_modules/,
+        query: {
+          compact: false
+        }
       }
     ],
     loaders: [

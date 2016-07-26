@@ -2,7 +2,7 @@
 
 <template>
   <!-- バインディングに失敗すると動かない -->
-  <div>
+  <div class="list-item" :class="{ 'is-active': isActive }">
     <tabs :active="0">
       <tab header="テキスト">
         <span>{{ text }}</span>
@@ -21,6 +21,7 @@
   import tab from 'vue-strap/src/tab'
   import tabs from 'vue-strap/src/tabset'
   // require('style!raw!./node_modules/bootstrap/dist/css/bootstrap.min.css')
+  // require('//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js')
 
   export default {
     components: {
@@ -34,7 +35,9 @@
       },
       date: {
         type: Number
-      }
+      },
+      'num'
+      'isActive'
     },
     // prop は内部テンプレートで利用でき、
     // そして `this.msg` として設定されます
@@ -46,12 +49,28 @@
       dateText: x => {
         return DateFormat(x.date, 'yyyy/mm/dd')
       }
-    }
+    },
 
     // TODO: データバインディングを実際動かしてみる
+
+    // ライフサイクルイベント
+    created () { console.log('created') },
+    ready () {
+      console.log('ready', this.isActive)
+      clearTimeout(this.timeoutId)
+      this.timeoutId = setTimeout(() => { this.isActive = true }, this.num * 100)
+    },
+    destroyed () { console.log('destroyed') }
     // TODO: 投稿機能作る
   }
 </script>
 
 <style>
+  .list-item{
+    opacity: 0;
+    transition: all 500ms linear;
+  }
+  .list-item.is-active{
+    opacity: 1;
+  }
 </style>

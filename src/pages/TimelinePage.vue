@@ -10,12 +10,13 @@
     <div v-show="tweets.length > 0">
       <table class="checkout-table">
         <tbody>
-        <tr v-for="t in tweets">
+        <tr v-for="(index, t) in tweets">
           <td>
             <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
             <tweet-component
               v-bind:text="t.text"
               v-bind:date="t.date"
+              v-bind:num="index"
             ></tweet-component>
           </td>
         </tr>

@@ -21,10 +21,7 @@
   import tab from 'vue-strap/src/tab'
   import tabs from 'vue-strap/src/tabset'
   // require('style!raw!./node_modules/bootstrap/dist/css/bootstrap.min.css')
-  // jQuery
-  import $ from '../../lib/jquery-2.2.4.min'
-  // velocity
-  import velocity from '../../lib/velocity.min'
+  // require('//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js')
 
   export default {
     components: {
@@ -39,8 +36,8 @@
       date: {
         type: Number
       },
-      'num': { type: Number }, // 自身の番号
-      'isActive': { type: Boolean }
+      'num'
+      'isActive'
     },
     // prop は内部テンプレートで利用でき、
     // そして `this.msg` として設定されます
@@ -53,32 +50,18 @@
         return DateFormat(x.date, 'yyyy/mm/dd')
       }
     },
-    // TODO: 投稿機能作る
 
     // TODO: データバインディングを実際動かしてみる
+
     // ライフサイクルイベント
-    // created () { console.log('created') },
-    // こうも書ける
-    created: () => {
-      console.log('tweet-component created')
-    },
+    created () { console.log('created') },
     ready () {
-      console.log('tweet-component ready')
-      // タイマーでシンプルにフェードインさせる
-      // props内にてフラグを管理する
+      console.log('ready', this.isActive)
       clearTimeout(this.timeoutId)
-      this.timeoutId = setTimeout(() => {
-        this.isActive = true
-        $(this.$el).on('oTransitionEnd mozTransitionEnd webkitTransitionEnd transitionend', () => {
-          this.$dispatch('app-animation-complete', this.num)
-          velocity
-        })
-      }, this.num * 100)
+      this.timeoutId = setTimeout(() => { this.isActive = true }, this.num * 100)
     },
-    destroyed () {
-      console.log('tweet-component destroyed')
-      clearTimeout(this.timeoutId)
-    }
+    destroyed () { console.log('destroyed') }
+    // TODO: 投稿機能作る
   }
 </script>
 

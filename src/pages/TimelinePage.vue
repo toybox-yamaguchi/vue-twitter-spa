@@ -17,7 +17,6 @@
               v-bind:text="t.text"
               v-bind:date="t.date"
               v-bind:num="index"
-              v-on:app-animation-complete="onAnimationComplete"
             ></tweet-component>
           </td>
         </tr>
@@ -76,9 +75,6 @@
       // アロー関数を使うとthisが束縛されるので使わない
       update: function () {
         this.getTimeline()
-      },
-      onAnimationComplete: function (e) {
-        console.log('onAnimationComplete', e)
       }
     }
   }

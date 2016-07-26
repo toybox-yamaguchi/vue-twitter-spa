@@ -73,7 +73,9 @@
           this.$dispatch('app-animation-complete', this.num)
           velocity
         })
-      }, this.num * 100)
+      },
+      // this.num * 100*/
+      0)
     },
     destroyed () {
       console.log('tweet-component destroyed')

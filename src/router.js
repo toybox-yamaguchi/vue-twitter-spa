@@ -1,5 +1,3 @@
-import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage'
 import CartPage from './pages/CartPage'
 import TimelinePage from './pages/TimelinePage.vue'
 
@@ -15,13 +13,6 @@ router.map({
   '/': {
     component: TimelinePage
   },
-  '/home': {
-    component: HomePage
-  },
-  '/product/:id': {
-    name: 'product',
-    component: ProductPage
-  },
   '/cart': {
     component: CartPage
   },
@@ -31,7 +22,6 @@ router.map({
   '/timeline/:id': {
     component: TimelinePage
   }
-
 })
 
 export default router

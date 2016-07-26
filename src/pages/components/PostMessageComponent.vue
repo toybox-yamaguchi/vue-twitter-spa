@@ -25,14 +25,10 @@
       message: {
         type: String,
         default: ''
-      },
-      // 投稿に使用するAPIは外部から挿入される
-      // https://jp.vuejs.org/guide/components.html#再利用可能なコンポーネントの作成
-      targetApi: {
-        type: String
       }
     },
     methods: {
+      // 投稿に使用するアクションは外部から挿入される
       post: function () {
         this.$dispatch('event-post', this.message)
       }
@@ -40,5 +36,4 @@
   }
 </script>
 
-<style>
-</style>
+<style></style>

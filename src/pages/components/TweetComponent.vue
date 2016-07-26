@@ -39,7 +39,6 @@
     // prop は内部テンプレートで利用でき、
     // そして `this.msg` として設定されます
     // template: '<span>{{ msg }}</span>'
-    // WARNING: this が使えるのはこのファイルで Vue.extend したときのみ
 
     // 算出プロパティはバインド式が肥大化するのを防ぐために使う
     computed: {
@@ -47,8 +46,6 @@
         return DateFormat(x.date, 'yyyy/mm/dd HH:MM:ss')
       }
     }
-
-    // TODO: 投稿機能作る
   }
 </script>
 

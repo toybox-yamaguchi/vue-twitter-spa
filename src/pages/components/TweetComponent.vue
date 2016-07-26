@@ -1,32 +1,32 @@
 <!-- 本コンポーネントはTimeline以外でも利用される -->
+<!-- Storeを持つ必要が無いのでVuexに依存しない -->
 
 <template>
   <!-- バインディングに失敗すると動かない -->
-  <div>
-    <tabs :active="0">
-      <tab header="テキスト">
-        <span>{{ text }}</span>
-      </tab>
-      <tab header="日付">
-        <span>{{ dateText }}</span>
-      </tab>
-      <tab header="無効化されたタブ" disabled>
-      </tab>
-    </tabs>
+
+  <div class="card card-block">
+    <div header="テキスト">
+      <span>{{ text }}</span>
+    </div>
+    <div header="日付">
+      <span>{{ dateText }}</span>
+    </div>
+    <div header="無効化されたタブ" disabled></div>
   </div>
+
 </template>
 
 <script>
   import DateFormat from 'dateformat'
-  import tab from 'vue-strap/src/tab'
-  import tabs from 'vue-strap/src/tabset'
+  // import tab from 'vue-strap/src/tab'
+  // import tabs from 'vue-strap/src/tabset'
   // require('style!raw!./node_modules/bootstrap/dist/css/bootstrap.min.css')
 
   export default {
-    components: {
-      tab,
-      tabs
-    },
+    // components: {
+    //   tab,
+    //   tabs
+    // },
     props: {
       text: {
         type: String,
@@ -44,11 +44,10 @@
     // 算出プロパティはバインド式が肥大化するのを防ぐために使う
     computed: {
       dateText: x => {
-        return DateFormat(x.date, 'yyyy/mm/dd')
+        return DateFormat(x.date, 'yyyy/mm/dd HH:MM:ss')
       }
     }
 
-    // TODO: データバインディングを実際動かしてみる
     // TODO: 投稿機能作る
   }
 </script>

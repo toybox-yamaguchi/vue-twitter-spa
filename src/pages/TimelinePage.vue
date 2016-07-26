@@ -1,8 +1,10 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
   <div class="cart">
+    <post-message-component></post-message-component>
+
     <div>
-      <button v-on:click="update">Update</button>
+      <button v-on:click="update" class="btn btn-info-outline">Update</button>
     </div>
 
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
@@ -13,10 +15,7 @@
         <tr v-for="t in tweets">
           <td>
             <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
-            <tweet-component
-              v-bind:text="t.text"
-              v-bind:date="t.date"
-            ></tweet-component>
+            <tweet-component v-bind:text="t.text" v-bind:date="t.date"></tweet-component>
           </td>
         </tr>
         </tbody>
@@ -46,10 +45,12 @@
 <script>
   import { getTimeline } from '../vuex/timeline/actions'
   import TweetComponent from './components/TweetComponent.vue'
+  import PostMessageComponent from './components/PostMessageComponent.vue'
 
   export default {
     components: {
-      TweetComponent
+      TweetComponent,
+      PostMessageComponent
     },
     vuex: {
       // storeへの直接アクセスを防ぐためのもの｡引数に親コンポーネント(App.vue)からstateが注入される

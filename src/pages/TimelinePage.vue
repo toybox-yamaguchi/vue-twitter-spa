@@ -1,8 +1,10 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
   <div class="cart">
+    <post-message-component></post-message-component>
+
     <div>
-      <button v-on:click="update">Update</button>
+      <button v-on:click="update" class="btn btn-info-outline">Update</button>
     </div>
 
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
@@ -17,7 +19,6 @@
               v-bind:text="t.text"
               v-bind:date="t.date"
               v-bind:num="index"
-              v-on:app-animation-complete="onAnimationComplete"
             ></tweet-component>
           </td>
         </tr>
@@ -48,10 +49,12 @@
 <script>
   import { getTimeline } from '../vuex/timeline/actions'
   import TweetComponent from './components/TweetComponent.vue'
+  import PostMessageComponent from './components/PostMessageComponent.vue'
 
   export default {
     components: {
-      TweetComponent
+      TweetComponent,
+      PostMessageComponent
     },
     vuex: {
       // storeへの直接アクセスを防ぐためのもの｡引数に親コンポーネント(App.vue)からstateが注入される
@@ -76,9 +79,6 @@
       // アロー関数を使うとthisが束縛されるので使わない
       update: function () {
         this.getTimeline()
-      },
-      onAnimationComplete: function (e) {
-        console.log('onAnimationComplete', e)
       }
     }
   }

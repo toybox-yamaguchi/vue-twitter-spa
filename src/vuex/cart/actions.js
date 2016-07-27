@@ -7,7 +7,7 @@
  * This file contains actions for the cart, specific functions with
  * arguments which apply mutations on the store.
  */
-import shop from '../../api/shop'
+import shop from '../../modules/api/shop'
 import * as types from '../mutation-types'
 
 // The first argument is the vuex store, but we're using only the

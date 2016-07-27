@@ -29,8 +29,8 @@
 
 <script>
   import { getTimeline, addTweet } from '../vuex/timeline/actions'
-  import TweetComponent from './components/TweetComponent.vue'
-  import PostMessageComponent from './components/PostMessageComponent.vue'
+  import TweetComponent from '../components/TweetComponent.vue'
+  import PostMessageComponent from '../components/PostMessageComponent.vue'
 
   export default {
     components: {

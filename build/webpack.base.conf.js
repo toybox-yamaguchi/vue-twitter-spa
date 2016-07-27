@@ -26,14 +26,15 @@ module.exports = {
         loader: 'eslint',
         exclude: /node_modules/
       },
+      /*
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'eslint',
         exclude: /node_modules/,
         query: {
           compact: false
         }
-      }
+      },*/
     ],
     loaders: [
       {
@@ -60,6 +61,10 @@ module.exports = {
           limit: 10000,
           name: '[name].[ext]?[hash:7]'
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'css'
       }
     ]
   },

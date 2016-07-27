@@ -2,35 +2,50 @@
 
 <template>
   <!-- バインディングに失敗すると動かない -->
-  <div class="list-item" :class="{ 'is-active': isActive }">
-    <tabs :active="0">
-      <tab header="テキスト">
-        <span>{{ text }}</span>
-      </tab>
-      <tab header="日付">
-        <span>{{ dateText }}</span>
-      </tab>
-      <tab header="無効化されたタブ" disabled>
-      </tab>
-    </tabs>
+  <div class="card card-block list-item" :class="{ 'is-active': isActive }">
+    <ul class="scroller">
+      <li class="item">
+        <div header="テキスト">
+          <span>{{ text }}</span>
+        </div>
+        <div header="日付">
+          <span>{{ dateText }}</span>
+        </div>
+      </li>
+      <li class="item">
+        <img src="/static/assets/logo.png">
+      </li>
+    </ul>
+
   </div>
 </template>
 
 <script>
   import DateFormat from 'dateformat'
-  import tab from 'vue-strap/src/tab'
-  import tabs from 'vue-strap/src/tabset'
+  // import tab from 'vue-strap/src/tab'
+  // import tabs from 'vue-strap/src/tabset'
   // require('style!raw!./node_modules/bootstrap/dist/css/bootstrap.min.css')
+
   // jQuery
-  import $ from '../../lib/jquery-2.2.4.min'
+  var $ = window.jQuery = require('jquery')
+
   // velocity
-  import velocity from '../../lib/velocity.min'
+  window.velocity = require('../lib/velocity.min')
+
+  // slick
+  window.slick = require('slick')
+  require('../lib/slick.css')
+
+  // loading test
+  console.log('$', $)
+  console.log('window', $('body').velocity)
+  console.log('slick', $('body').slick)
 
   export default {
-    components: {
-      tab,
-      tabs
-    },
+    // components: {
+    // tab,
+    // tabs
+    // },
     props: {
       text: {
         type: String,
@@ -64,30 +79,20 @@
     },
     ready () {
       console.log('tweet-component ready')
-      // タイマーでシンプルにフェードインさせる
-      // props内にてフラグを管理する
-      clearTimeout(this.timeoutId)
-      this.timeoutId = setTimeout(() => {
-        this.isActive = true
-        $(this.$el).on('oTransitionEnd mozTransitionEnd webkitTransitionEnd transitionend', () => {
-          this.$dispatch('app-animation-complete', this.num)
-          velocity
-        })
-      }, this.num * 100)
     },
     destroyed () {
       console.log('tweet-component destroyed')
-      clearTimeout(this.timeoutId)
     }
   }
 </script>
 
-<style>
-  .list-item{
-    opacity: 0;
-    transition: all 500ms linear;
-  }
-  .list-item.is-active{
-    opacity: 1;
+<style lang="scss">
+  .scroller{
+    list-style: none;
+    padding-left: 0;
+
+    .item {
+
+    }
   }
 </style>

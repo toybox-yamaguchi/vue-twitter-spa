@@ -23,10 +23,6 @@
   // require('style!raw!./node_modules/bootstrap/dist/css/bootstrap.min.css')
 
   export default {
-    // components: {
-    //   tab,
-    //   tabs
-    // },
     props: {
       text: {
         type: String,

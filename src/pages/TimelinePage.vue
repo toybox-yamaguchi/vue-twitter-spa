@@ -12,16 +12,13 @@
     <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
 
     <div v-show="tweets.length > 0">
-      <table class="checkout-table">
-        <tbody>
-        <tr v-for="t in tweets | orderBy 'date' -1">
-          <td>
-            <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
-            <tweet-component v-bind:text="t.text" v-bind:date="t.date"></tweet-component>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <div
+       v-for="t in tweets | orderBy 'date' -1"
+       transition="item"
+      >
+        <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
+        <tweet-component v-bind:text="t.text" v-bind:date="t.date"></tweet-component>
+      </div>
     </div>
 
   </div>
@@ -95,5 +92,10 @@
 .total td {
   border-top: 1px solid #aaa;
   padding-top: 10px;
+}
+
+.item-move {
+  /* applied to the element when moving */
+  transition: transform .5s cubic-bezier(.55,0,.1,1);
 }
 </style>

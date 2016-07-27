@@ -4,9 +4,15 @@
 
 <template>
   <!-- バインディングに失敗すると動かない -->
-  <div class="card card-block">
-    <label class="control-label" for="textarea1">今何してる？</label>
-    <div class="text-xs-right">
+  <div
+    class="card"
+    v-if="isShow"
+    transition="expand"
+  >
+    <h4 class="card-header">投稿用フォーム</h4>
+    <div class="card-inverse card-block" >
+      <label class="control-label" for="textarea1">今何してる？</label>
+      <div class="text-xs-right">
       <textarea
         id="textarea1"
         v-model="message"
@@ -14,7 +20,8 @@
         class="form-control"
         rows="5"
       ></textarea>
-      <button @click="post" class="btn btn-primary">投稿</button>
+        <button @click="post" class="btn btn-primary">投稿</button>
+      </div>
     </div>
   </div>
 </template>
@@ -27,13 +34,41 @@
         default: ''
       }
     },
+    data () {
+      return {
+        isShow: false // data なり props なりで定義されていない値をバインドするとエラーを吐かずに動かない
+      }
+    },
     methods: {
       // 投稿に使用するアクションは外部から挿入される
-      post: function () {
+      // post: function () {
+      post () {
         this.$dispatch('event-post', this.message)
+
+        // this.isShow = false
+        // let self = this
+        // setTimeout(() => { self.isShow = true }, 1000)
       }
+    },
+    created () {
+      let self = this
+      setTimeout(() => { self.isShow = true }, 1000)
     }
   }
 </script>
 
-<style></style>
+<style>
+  /* 常に表示 */
+  .expand-transition {
+    transition: all .3s ease;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  /* .expand-enter は entering に対する開始状態を定義 */
+  /* .expand-leave は leaving に対する終了状態を定義 */
+  .expand-enter, .expand-leave {
+    height: 0;
+    opacity: 0;
+  }
+</style>

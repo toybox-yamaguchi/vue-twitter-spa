@@ -7,3 +7,6 @@ export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 export const RECEIVE_TIMELINE = 'RECEIVE_TIMELINE'
 export const ADD_TWEET = 'ADD_TWEET'
 
+// LocalStorage
+export const SAVE_LOCALSTORAGE = 'SAVE_LOCALSTORAGE'
+

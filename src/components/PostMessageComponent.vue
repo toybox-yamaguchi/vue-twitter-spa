@@ -18,15 +18,18 @@
         v-model="message"
         placeholder="デフォルト文字列"
         class="form-control"
-        rows="5"
+        rows="3"
+        @input="saveStubMessage"
       ></textarea>
-        <button @click="post" class="btn btn-primary">投稿</button>
+        <button @click="postMessage" class="btn btn-primary">投稿</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import store from 'store'
+
   export default {
     props: {
       message: {
@@ -42,17 +45,22 @@
     methods: {
       // 投稿に使用するアクションは外部から挿入される
       // post: function () {
-      post () {
+      postMessage () {
         this.$dispatch('event-post', this.message)
 
         // this.isShow = false
         // let self = this
         // setTimeout(() => { self.isShow = true }, 1000)
+      },
+      saveStubMessage () {
+        store.set('stubMessage', this.message)
       }
     },
     created () {
       let self = this
       setTimeout(() => { self.isShow = true }, 1000)
+
+      this.message = store.get('stubMessage')
     }
   }
 </script>

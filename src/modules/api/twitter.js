@@ -18,6 +18,7 @@ export default {
           let t = Object.assign({}, _tweets[0]) // コピー
           t.id = i
           t.text = 'デフォルトテキスト: ' + i
+          t.date = Date.now() + (i * 1)
           return t
         })
         .toArray()

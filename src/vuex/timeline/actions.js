@@ -9,9 +9,14 @@ export const getTimeline = ({ dispatch }) => {
   }, true)
 }
 
-export const addTweet = ({ dispatch }, message) => {
+export const addTweet = ({ dispatch }, text) => {
   // 非同期API
   twitter.getNewTweet(tweet => {
     dispatch(types.ADD_TWEET, tweet)
-  }, message, true)
+  }, text, true)
+}
+
+export const removeTweet = ({ dispatch }, targetTweet) => {
+  // 非同期API
+  dispatch(types.REMOVE_TWEET, targetTweet)
 }

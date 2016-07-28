@@ -17,7 +17,7 @@ export default {
         .select(i => {
           let t = Object.assign({}, _tweets[0]) // コピー
           t.id = i
-          t.text = 'Default'
+          t.text = 'デフォルトテキスト: ' + i
           return t
         })
         .toArray()

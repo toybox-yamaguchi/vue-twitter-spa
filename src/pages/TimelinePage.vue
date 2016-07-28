@@ -9,7 +9,7 @@
       <button v-on:click="update" class="btn btn-info-outline">Timeline update</button>
     </div>
 
-    <p v-show="tweets.length===0"><i>Please add some tweets to cart.</i></p>
+    <p v-show="tweets.length===0"><i>メッセージ無し</i></p>
 
     <div v-show="tweets.length > 0">
       <div
@@ -17,7 +17,12 @@
        transition="item"
       >
         <!-- 動的な値を渡すときは v-bind:propname (省略して:propname) -->
-        <tweet-component v-bind:text="t.text" v-bind:date="t.date"></tweet-component>
+        <tweet-component
+          :text="t.text"
+          :date="t.date"
+          :obj="t"
+          @event-remove="removeTweet"
+        ></tweet-component>
       </div>
     </div>
 
@@ -25,7 +30,7 @@
 </template>
 
 <script>
-  import { getTimeline, addTweet } from '../vuex/timeline/actions'
+  import { getTimeline, addTweet, removeTweet } from '../vuex/timeline/actions'
   import TweetComponent from '../components/TweetComponent.vue'
   import PostMessageComponent from '../components/PostMessageComponent.vue'
 
@@ -48,7 +53,8 @@
       },
       actions: {
         getTimeline,
-        addTweet
+        addTweet,
+        removeTweet
       }
     },
     created () {

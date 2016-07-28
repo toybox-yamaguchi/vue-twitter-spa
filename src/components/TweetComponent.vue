@@ -4,7 +4,11 @@
 <template>
   <!-- バインディングに失敗すると動かない -->
 
-  <div class="card card-block">
+  <div
+    class="card card-block"
+    v-touch:swiperight="onSwipeRight"
+    v-touch-options:swipe="{ direction: 'horizontal', threshold: 50 }"
+  >
     <div header="テキスト">
       <span>{{ text }}</span>
     </div>
@@ -30,6 +34,9 @@
       },
       date: {
         type: Number
+      },
+      obj: {
+        type: Object
       }
     },
     // prop は内部テンプレートで利用でき、
@@ -41,6 +48,15 @@
       dateText: x => {
         return DateFormat(x.date, 'yyyy/mm/dd HH:MM:ss')
       }
+    },
+    methods: {
+      onSwipeRight () {
+        console.log('Swipe left !!')
+        this.$dispatch('event-remove', this.obj)
+      }
+    },
+    destroyed () {
+      console.log('DESTROYED: ' + this.text)
     }
   }
 </script>

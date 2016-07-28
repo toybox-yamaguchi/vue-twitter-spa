@@ -6,6 +6,7 @@ export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 // Twitter
 export const RECEIVE_TIMELINE = 'RECEIVE_TIMELINE'
 export const ADD_TWEET = 'ADD_TWEET'
+export const REMOVE_TWEET = 'REMOVE_TWEET'
 
 // LocalStorage
 export const SAVE_LOCALSTORAGE = 'SAVE_LOCALSTORAGE'

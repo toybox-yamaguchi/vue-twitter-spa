@@ -1,6 +1,7 @@
 import {
   RECEIVE_TIMELINE,
-  ADD_TWEET
+  ADD_TWEET,
+  REMOVE_TWEET
 } from '../mutation-types'
 
 import Enumerable from 'linq'
@@ -24,6 +25,10 @@ const mutations = {
   [ADD_TWEET] (state, newTweet) {
     state.all.push(newTweet)
     // console.log(JSON.stringify(state.all))
+  },
+  [REMOVE_TWEET] (state, targetTweet) {
+    state.all = state.all.filter((t) => t !== targetTweet)
+    console.log('state.all.count: ' + state.all.length)
   }
 
   // [ADD_TO_CART] (state, productId) {
